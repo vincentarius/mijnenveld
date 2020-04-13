@@ -10,17 +10,19 @@
     </head>
 <body>
 
+    <form id="plaatsSpeelbord">
+        Geef de waarde:
+          <select id="knopPlaatsSpeelbord">
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+          </select>
+        <input type="button" onclick="plaatsSpeelbord(speelbord)" value="Maak speelbord">
+    </form>
     
 
-    <button
-        id = "plaatsSpeelbord"
-        onclick="plaatsSpeelbord(speelbord)">
-        Plaats Speelbord
-    </button>
     
     <button onclick="toonAlleSpeelbordWaarden(speelbord)">Toon Speelbord waarden</button>
-    <button onclick="maakBlauw(speelbord)">Maak iets blauw</button>
-    <button onclick="maakBom(speelbord)">Maak bom!</button>
     <div id="speelbord" display="none"></div>
     <div id="demo"></div>
 
