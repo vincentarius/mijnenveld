@@ -1,9 +1,24 @@
 var speelbord = [];
 var blokGrootte = 100;
-var bordGrootte = 10;
-var aantalBommen = bordGrootte * 2;
+var aantalBommen = 5;
 
-definieerSpeelbord(speelbord,bordGrootte);
+
+function plaatsSpeelbord(bord) {
+    var obj = document.getElementById("knopPlaatsSpeelbord");
+    var grootte = obj.options[obj.selectedIndex].text;
+    definieerSpeelbord(bord,grootte);
+    let speelbordMarker = document.getElementById("speelbord");
+    let knopPlaatsSpeelbord = document.getElementById("plaatsSpeelbord");
+    var aantal = bord.length;
+    if (bord.speelbordStatus != 'gemaakt') {
+        for (var i = 0; i < aantal; i++) {
+            plaatsBlokje(bord,i);
+        };
+        knopPlaatsSpeelbord.style.display = "none";
+        bord.speelbordStatus = ("gemaakt");
+    };    
+    console.log(bord);
+};
 
 function definieerSpeelbord(bord,aantal) {
     speelbordGrootte = aantal * aantal;
@@ -21,7 +36,7 @@ function definieerSpeelbord(bord,aantal) {
     };
     // TODO Hier moet nog een nested loop worden gemaakt
     bepaalPosities(bord);
-    legBommen(bord,aantalBommen);
+    legBommen(bord);
 };
 
 function bepaalPosities(bord) {
@@ -44,28 +59,15 @@ function bepaalPosities(bord) {
     };
 };
 
-function legBommen(bord,aantal) {
+function legBommen(bord) {
     let max = bord.length;
     var rndBlok;
+    var aantal = aantalBommen * 2;
 
     for (let i = 0;i < aantal; i++) {
         rndBlok = Math.floor(Math.random() * (max - 1 ) ) + 1;
         bord[rndBlok].bom = true;
     };
-};
-
-function plaatsSpeelbord(bord) {
-    let speelbordMarker = document.getElementById("speelbord");
-    let knopPlaatsSpeelbord = document.getElementById("plaatsSpeelbord");
-    var aantal = bord.length;
-    if (bord.speelbordStatus != 'gemaakt') {
-        for (var i = 0; i < aantal; i++) {
-            plaatsBlokje(bord,i);
-        };
-        knopPlaatsSpeelbord.style.display = "none";
-        bord.speelbordStatus = ("gemaakt");
-    };    
-    console.log(bord);
 };
 
 function plaatsBlokje(bord,identifier) {
