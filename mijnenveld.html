@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            mijnenveld
-        </title>
-
-
-
-    </head>
+<head>
+    <title>
+        mijnenveld
+    </title>
+    <script 
+        src="mijnenveldSpeelbord.js">
+    </script>
+    <script
+        src="mijnenveldActies.js">            
+    </script>
+</head>
 <body>
 
-    <form id="plaatsSpeelbord">
+    <form id="speelbordSelectie">
         Geef de waarde:
-          <select id="knopPlaatsSpeelbord">
+        <select id="selecteerSpeelbordGrootte">
+            <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
             <option value="10">10</option>
-          </select>
-        <input type="button" onclick="plaatsSpeelbord(speelbord)" value="Maak speelbord">
+        </select>
+        <input type="button" 
+               onclick="plaatsSpeelbord(speelbord)" 
+               value="Maak speelbord">
     </form>
     
+    <button onclick="toonAlleSpeelbordWaarden(speelbord)"
+            id="speelbordWaarden"
+            style="display: none">
+            Toon Speelbord waarden
+    </button>
 
-    
-    <button onclick="toonAlleSpeelbordWaarden(speelbord)">Toon Speelbord waarden</button>
+    <button onclick="slaOp(speelbord)"
+            id="speelbordOpslaan"
+            style="display: none">
+            Sla op
+    </button>
+
     <div id="speelbord" display="none"></div>
-    <div id="demo"></div>
-
 
 </body>
-<script 
-src="mijnenveldSpeelbord.js">
-</script>
-<script
-src="mijnenveldActies.js">            
-</script>
+
 
 </html>
