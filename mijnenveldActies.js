@@ -37,10 +37,19 @@ function slaOp(bord) {
 function opgeslagenSpeelborden() {
     var aantalOpgeslagen = localStorage.length;
     var lijstOpgeslagen = [];
+    var opgeslagenSpeelborden = document.getElementById('opgeslagenSpeelborden');
 
     for (let i = 0; i < aantalOpgeslagen; i++ ){
         lijstOpgeslagen.push(localStorage.key(i));        
     };
     console.log(lijstOpgeslagen);
-};
+    ul = document.createElement('ul');
+    opgeslagenSpeelborden.appendChild(ul);
 
+    lijstOpgeslagen.forEach(function (opgeslagen) {
+        let li = document.createElement('li');
+        ul.appendChild(li);
+        li.innerHTML += opgeslagen;
+    });
+    opgeslagenSpeelborden.style.display = "inline";
+};
