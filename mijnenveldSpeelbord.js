@@ -23,7 +23,7 @@ function plaatsSpeelbord(bord) {
             plaatsBlokje(bord,i);
         };
     };
-    speelbordSelectie.style.display = "none";
+    // speelbordSelectie.style.display = "none";
     speelbordWaarden.style.display = "inline";
     speelbordOpslaan.style.display = "inline";
     verwijderSpeelborden.style.display = "inline";
@@ -87,7 +87,7 @@ function plaatsBlokje(bord,identifier) {
         blok.style.backgroundColor = "red";
         blok.style.border = "solid";
         blok.draggable = bord[identifier].verplaatsbaar;
-    // Plaats het canvas element 
+    // Plaats het canvas element
     document.body.insertBefore(blok,speelbordLocatie);
 };
 
