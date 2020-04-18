@@ -23,7 +23,7 @@ function plaatsSpeelbord(bord) {
             plaatsBlokje(bord,i);
         };
     };
-    // speelbordSelectie.style.display = "none";
+    speelbordSelectie.style.display = "none";
     speelbordWaarden.style.display = "inline";
     speelbordOpslaan.style.display = "inline";
     verwijderSpeelborden.style.display = "inline";
