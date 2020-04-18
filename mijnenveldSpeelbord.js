@@ -13,6 +13,8 @@ function plaatsSpeelbord(bord) {
     speelbordSelectie = document.getElementById("speelbordSelectie");
     speelbordWaarden = document.getElementById("speelbordWaarden");
     speelbordOpslaan = document.getElementById("speelbordOpslaan");
+    verwijderSpeelborden = document.getElementById('verwijderSpeelborden');
+    toonOpgeslagenSpeelborden = document.getElementById('toonOpgeslagenSpeelborden');
 
     definieerSpeelbord(bord);
 
@@ -24,6 +26,8 @@ function plaatsSpeelbord(bord) {
     speelbordSelectie.style.display = "none";
     speelbordWaarden.style.display = "inline";
     speelbordOpslaan.style.display = "inline";
+    verwijderSpeelborden.style.display = "inline";
+    toonOpgeslagenSpeelborden.style.display = "inline";
     bord.speelbordStatusAangemaakt = true;
     console.log(bord);
 };
