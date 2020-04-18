@@ -30,26 +30,55 @@ function randomBlok() {
 
 function slaOp(bord) {
     var date = new Date();
-    localStorage.setItem("speelbord " + date, JSON.stringify(bord));
-    opgeslagenSpeelborden();
+    localStorage.setItem("speelbord" + date, JSON.stringify(bord));
+    // window.display("Uw speelbord is opgeslagen");
 };
 
-function opgeslagenSpeelborden() {
+function verwijderAlleSpeelborden() {
+    var teVerwijderenSpeelborden = [];
+    // Voeg alle speelborden die verwijderd moeten worden toe aan de lijst
+    for (var i = 0; i < localStorage.length; i++){
+        if (localStorage.key(i).substring(0,9) == 'speelbord') {
+            teVerwijderenSpeelborden.push(localStorage.key(i));
+        };
+    };
+
+    // Maak de lijst met te verwijderen speelborden leeg
+    for (var i = 0; i < teVerwijderenSpeelborden.length; i++) {
+        localStorage.removeItem(teVerwijderenSpeelborden[i]);
+    };
+
+    // Verwijder ook de bestaande lijst op het scherm    
+    while (opgeslagenSpeelborden.hasChildNodes()) {  
+        opgeslagenSpeelborden.removeChild(opgeslagenSpeelborden.firstChild);
+    };
+};
+
+function toonSpeelborden() {
     var aantalOpgeslagen = localStorage.length;
     var lijstOpgeslagen = [];
-    var opgeslagenSpeelborden = document.getElementById('opgeslagenSpeelborden');
 
+    // Verwijder eerst de bestaande lijst op het scherm    
+    while (opgeslagenSpeelborden.hasChildNodes()) {  
+        opgeslagenSpeelborden.removeChild(opgeslagenSpeelborden.firstChild);
+    };
+    
+    // Haal dan de lijst met alle speelborden die zijn opgeslagen in de localstorage op
     for (let i = 0; i < aantalOpgeslagen; i++ ){
         lijstOpgeslagen.push(localStorage.key(i));        
     };
-    console.log(lijstOpgeslagen);
+
+    // Maak een lijst aan om de opgehaalde lijst met opgeslagen speelborden te tonen
     ul = document.createElement('ul');
     opgeslagenSpeelborden.appendChild(ul);
 
+    //En maak voor ieder opgeslagen speelbord een list item
     lijstOpgeslagen.forEach(function (opgeslagen) {
         let li = document.createElement('li');
         ul.appendChild(li);
         li.innerHTML += opgeslagen;
     });
+
+    // Maak nu de lijst met opgeslagen speelborden zichtbaar
     opgeslagenSpeelborden.style.display = "inline";
 };
