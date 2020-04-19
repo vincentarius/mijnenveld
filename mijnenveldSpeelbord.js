@@ -7,14 +7,14 @@ var kolomPositie = 100;
 
 
 function plaatsSpeelbord(bord) {
-    geselecteerdeSpeelbordGrootte = document.getElementById("selecteerSpeelbordGrootte");
-    bordGrootte = geselecteerdeSpeelbordGrootte.options[geselecteerdeSpeelbordGrootte.selectedIndex].text;    
+    selectieSpeelbordGrootte = document.getElementById("selectieSpeelbordGrootte");
+    bordGrootte = selectieSpeelbordGrootte.options[selectieSpeelbordGrootte.selectedIndex].text;    
     speelbordLocatie = document.getElementById("speelbord");
-    speelbordSelectie = document.getElementById("speelbordSelectie");
-    speelbordWaarden = document.getElementById("speelbordWaarden");
-    speelbordOpslaan = document.getElementById("speelbordOpslaan");
-    verwijderSpeelborden = document.getElementById('verwijderSpeelborden');
-    toonOpgeslagenSpeelborden = document.getElementById('toonOpgeslagenSpeelborden');
+    formSpeelbordSelectie = document.getElementById("formSpeelbordSelectie");
+    knopSpeelbordWaarden = document.getElementById("knopSpeelbordWaarden");
+    knopSpeelbordOpslaan = document.getElementById("knopSpeelbordOpslaan");
+    knopVerwijderSpeelborden = document.getElementById('knopVerwijderSpeelborden');
+    knopToonOpgeslagenSpeelborden = document.getElementById('knopToonOpgeslagenSpeelborden');
 
     definieerSpeelbord(bord);
 
@@ -23,11 +23,11 @@ function plaatsSpeelbord(bord) {
             plaatsBlokje(bord,i);
         };
     };
-    speelbordSelectie.style.display = "none";
-    speelbordWaarden.style.display = "inline";
-    speelbordOpslaan.style.display = "inline";
-    verwijderSpeelborden.style.display = "inline";
-    toonOpgeslagenSpeelborden.style.display = "inline";
+    formSpeelbordSelectie.style.display = "none";
+    knopSpeelbordWaarden.style.display = "inline";
+    knopSpeelbordOpslaan.style.display = "inline";
+    knopVerwijderSpeelborden.style.display = "inline";
+    knopToonOpgeslagenSpeelborden.style.display = "inline";
     bord.speelbordStatusAangemaakt = true;
     console.log(bord);
 };
