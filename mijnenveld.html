@@ -13,9 +13,11 @@
 </head>
 <body>
 
-    <form id="speelbordSelectie">
+    <form id="formSpeelbordSelectie"
+          data-cy="formSpeelbordSelectie">
         Geef de waarde:
-        <select id="selecteerSpeelbordGrootte">
+        <select id="selectieSpeelbordGrootte"
+                data-cy="selectieSpeelbordGrootte">
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
@@ -24,39 +26,45 @@
         <input type="button" 
                onclick="plaatsSpeelbord(speelbord)" 
                value="Maak speelbord"
-               data-cy="plaatsSpeelbord">
+               data-cy="knopPlaatsSpeelbord">
     </form>
     
     <button onclick="toonAlleSpeelbordWaarden(speelbord)"
-            id="speelbordWaarden"
-            style="display: none">
+            id="knopSpeelbordWaarden"
+            style="display: none"
+            data-cy="knopSpeelbordWaarden">
             Toon Speelbord waarden
     </button>
 
     <button onclick="slaOp(speelbord)"
-            id="speelbordOpslaan"
-            style="display: none">
+            id="knopSpeelbordOpslaan"
+            style="display: none"
+            data-cy="knopSpeelbordOpslaan">
             Sla op
     </button>
 
     <button onclick="toonSpeelborden()"
-            id="toonOpgeslagenSpeelborden"
-            style="display: none">
+            id="knopToonOpgeslagenSpeelborden"
+            style="display: none"
+            data-cy="knopToonOpgeslagenSpeelborden">
             Toon lijst
     </button>
 
     <button onclick="verwijderAlleSpeelborden()"
-            id="verwijderSpeelborden"
-            style="display: none">
+            id="knopVerwijderSpeelborden"
+            style="display: none"
+            data-cy="knopVerwijderSpeelborden">
             Verwijder
     </button>
 
     <div id="speelbord" 
-        style="display:none">
+         style="display:none"
+         data-cy="speelbord">
     </div>
 
     <div id="opgeslagenSpeelborden" 
-         style="display: none">
+         style="display: none"
+         data-cy="opgeslagenSpeelborden">
     </div>
 
 

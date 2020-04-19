@@ -30,8 +30,8 @@ function randomBlok() {
 
 function slaOp(bord) {
     var date = new Date();
-    localStorage.setItem("speelbord" + date, JSON.stringify(bord));
-    // window.display("Uw speelbord is opgeslagen");
+    localStorage.setItem("speelbord" /*+ date */, JSON.stringify(bord));
+    alert("Speelbord is opgeslagen!");
 };
 
 function verwijderAlleSpeelborden() {
