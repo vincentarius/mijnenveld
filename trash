@@ -1,42 +1,17 @@
 
+    bouwHelperScherm = document.getElementById("bouwHelper");
+    // Dit moet allemaal nog naar de CSS!
+    bouwHelperScherm.style.backgroundColor = "lightblue";
+    bouwHelperScherm.style.border = "1px solid black";
+    bouwHelperScherm.style.position = "absolute";
+    bouwHelperScherm.style.left = "500px";
+    bouwHelperScherm.style.top = "0px";
+    bouwHelperScherm.style.width = "600px";
+    bouwHelperScherm.style.height = "200px";
+    bouwHelperScherm.innerText = "Bouwhelper";
 
-    // let rij1 = 100;
-    // let kolom1 = "100px";
-    // for (let i = 0; i < aantal; i++) {
-    //     bord[i].yPositie = kolom1;
-    //     bord[i].xPositie = rij1 + "px";
-    //     rij1 = rij1 + 105;
-    //     if (i==3) {
-    //         break;
-    //     };        
-    // };
-    // let rij2 = 100;
-    // let kolom2 = "205px"
-    // for (let i = 4; i < aantal; i++) {
-    //     bord[i].yPositie = kolom2;
-    //     bord[i].xPositie = rij2 + "px";
-    //     rij2 = rij2 + 105;
-    //     if (i==7) {
-    //         break;
-    //     };        
-    // };
-    // let rij3 = 100;
-    // let kolom3 = "310px"
-    // for (let i = 8; i < aantal; i++) {
-    //     bord[i].yPositie = kolom3;
-    //     bord[i].xPositie = rij3 + "px";
-    //     rij3 = rij3 + 105;
-    //     if (i==11) {
-    //         break;
-    //     };        
-    // };
-    // let rij4 = 100;
-    // let kolom4 = "415px"
-    // for (let i = 12; i < aantal; i++) {
-    //     bord[i].yPositie = kolom4;
-    //     bord[i].xPositie = rij4 + "px";
-    //     rij4 = rij4 + 105;
-    //     if (i==15) {
-    //         break;
-    //     };        
-    // };
+    // Vanaf hier wordt de bouwehelper gevuld met informatie
+    let newItem = document.createElement("LI");       // Create a <li> node
+    let textnode = document.createTextNode("startpositie rij: " + speelbord.rijPositie);  // Create a text node
+    newItem.appendChild(textnode);
+    bouwHelperScherm.insertBefore(newItem, bouwHelperScherm.childNodes[1]);
