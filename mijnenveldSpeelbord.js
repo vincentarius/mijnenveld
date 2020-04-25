@@ -1,10 +1,14 @@
 var speelbord = [];
 var blokGrootte = 100;
 var aantalBommen = 5;
+
 // Dit zijn de startposties van het speelbord op het scherm
 var rijPositie = 100;
 var kolomPositie = 100;
 
+function onload() {
+
+};
 
 function plaatsSpeelbord(bord) {
     selectieSpeelbordGrootte = document.getElementById("selectieSpeelbordGrootte");
@@ -41,8 +45,7 @@ function definieerSpeelbord(bord) {
             xPositie: "",
             yPositie: "",
             bom : false,
-            zichtbaar : true,
-            verplaatsbaar: true
+            zichtbaar : true
         };        
     };
     aantalBlokjes = bord.length;
@@ -77,19 +80,22 @@ function legBommen(bord) {
 };
 
 function plaatsBlokje(bord,identifier) {
-    let blok = document.createElement("canvas");
+    let blok = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    let dataCy = document.createAttribute("data-cy");
+    dataCy.value = "geplaatstBlokje";
+    blok.setAttributeNode(dataCy);
         blok.id = "blok" + bord[identifier].id;
+        blok.style.border = "1px solid black";
         blok.style.position = "absolute";
         blok.style.left = bord[identifier].xPositie;
         blok.style.top = bord[identifier].yPositie;
-        blok.width = blokGrootte;
-        blok.height = blokGrootte;
+        blok.style.width = blokGrootte;
+        blok.style.height = blokGrootte;
         blok.style.backgroundColor = "red";
-        blok.style.border = "solid";
-        blok.draggable = bord[identifier].verplaatsbaar;
-    // Plaats het canvas element
+
+        var rect = document.createElement("rect");
+        blok.appendChild(rect);
+
+    // Plaats het svg element
     document.body.insertBefore(blok,speelbordLocatie);
 };
-
-
-
