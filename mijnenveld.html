@@ -11,9 +11,10 @@
         src="mijnenveldActies.js">            
     </script>
 </head>
-<body onload="bouwHelper()">
+<body>
 
     <form id="formSpeelbordSelectie"
+          style="display: inline"
           data-cy="formSpeelbordSelectie">
         Geef de waarde:
         <select id="selectieSpeelbordGrootte"
@@ -59,11 +60,32 @@
     </button>
 
     <button onclick="maakNieuwSpeelbord()"
-        id="knopMaakNieuwSpeelbord"
-        style="display: none"
-        data-cy="knopMaakNieuwSpeelbord">
-        Nieuw
+            id="knopMaakNieuwSpeelbord"
+            style="display: none"
+            data-cy="knopMaakNieuwSpeelbord">
+            Nieuw
     </button>
+
+    <button onclick="toonBouwHelper()"
+            id="knopToonBouwHelper"
+            style="display: inline">
+            Bouw helper
+    </button>
+
+    <div id="bouwHelperScherm"
+         style="display: none;
+                background-color: lightblue;
+                border: 1px solid black;
+                position: absolute;
+                left: 600px;
+                top: 0px;
+                width: 600px;"
+         data-cy="bouwHelper">
+         Bouwhelper
+         <div id="bouwHelperBommen"></div>
+         <div id="bouwHelperBord"></div>
+    </div>
+
 
     <div id="speelbord" 
          style="display:none"
@@ -75,10 +97,7 @@
          data-cy="opgeslagenSpeelborden">
     </div>
 
-    <div id="bouwHelper" 
-        style="display: inline"
-        data-cy="bouwHelper">
-    </div>
+
 
 </body>
 

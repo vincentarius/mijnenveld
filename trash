@@ -1,17 +1,5 @@
-
-    bouwHelperScherm = document.getElementById("bouwHelper");
-    // Dit moet allemaal nog naar de CSS!
-    bouwHelperScherm.style.backgroundColor = "lightblue";
-    bouwHelperScherm.style.border = "1px solid black";
-    bouwHelperScherm.style.position = "absolute";
-    bouwHelperScherm.style.left = "500px";
-    bouwHelperScherm.style.top = "0px";
-    bouwHelperScherm.style.width = "600px";
-    bouwHelperScherm.style.height = "200px";
-    bouwHelperScherm.innerText = "Bouwhelper";
-
-    // Vanaf hier wordt de bouwehelper gevuld met informatie
-    let newItem = document.createElement("LI");       // Create a <li> node
-    let textnode = document.createTextNode("startpositie rij: " + speelbord.rijPositie);  // Create a text node
-    newItem.appendChild(textnode);
-    bouwHelperScherm.insertBefore(newItem, bouwHelperScherm.childNodes[1]);
+.fakehidden {
+    -moz-opacity: 0;
+    filter:alpha(opacity: 0);
+    opacity: 0;
+}
