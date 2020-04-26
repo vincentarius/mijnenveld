@@ -9,6 +9,7 @@ function creeerLeegSpeelbord() {
     // Hier bepaal je de locatie van het speelbord
     speelbord.rijPositie = 50;
     speelbord.kolomPositie = 50;
+    bommen = [];
 };
 
 function plaatsSpeelbord() {
