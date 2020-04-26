@@ -4,20 +4,16 @@ creeerLeegSpeelbord();
 function creeerLeegSpeelbord() {
     speelbord = [];
     speelbord.speelbordStatusAangemaakt = false;
-    speelbord.blokGrootte = 100;
+    speelbord.blokGrootte = 50;
     speelbord.aantalBommen = 5;
-
-    // Dit zijn de startposties van het speelbord op het scherm
-    speelbord.rijPositie = 200;
-    speelbord.kolomPositie = 100;
+    // Hier bepaal je de locatie van het speelbord
+    speelbord.rijPositie = 50;
+    speelbord.kolomPositie = 50;
 };
-
-
 
 function plaatsSpeelbord() {
     selectieSpeelbordGrootte = document.getElementById("selectieSpeelbordGrootte");
     bordGrootte = selectieSpeelbordGrootte.options[selectieSpeelbordGrootte.selectedIndex].text;    
-    
     formSpeelbordSelectie = document.getElementById("formSpeelbordSelectie");
     knopSpeelbordWaarden = document.getElementById("knopSpeelbordWaarden");
     knopSpeelbordOpslaan = document.getElementById("knopSpeelbordOpslaan");
@@ -62,27 +58,31 @@ function definieerSpeelbord(speelbord) {
 
 function bepaalPosities(speelbord) {
     // De index is nodig om door alle blokjes op het speelbord te lopen
-    var index = 0;
+    let index = 0;
+    let kolomPositie = speelbord.kolomPositie;
+    let rijPositie = speelbord.rijPositie;
 
     for (let rij = 0; rij < bordGrootte; rij++) {
         for (let kolom = 0; kolom < bordGrootte; kolom++){
-            speelbord[index].yPositie = speelbord.rijPositie + "px";
-            speelbord[index].xPositie = speelbord.kolomPositie + "px";
-            speelbord.kolomPositie = speelbord.kolomPositie + speelbord.blokGrootte;
+            speelbord[index].yPositie = rijPositie + "px";
+            speelbord[index].xPositie = kolomPositie + "px";
+            kolomPositie = kolomPositie + speelbord.blokGrootte;
             index = index + 1;
         };
-        speelbord.rijPositie = speelbord.rijPositie + speelbord.blokGrootte;
-        speelbord.kolomPositie = 100;
+        rijPositie = rijPositie + speelbord.blokGrootte;
+        kolomPositie = speelbord.kolomPositie;
     };
 };
 
 function legBommen(speelbord) {
-    var rndBlok;
-    var aantal = speelbord.aantalBommen * 2;
+    let rndBlok;
+    let aantal = speelbord.aantalBommen * 2;
+    bommen = [];
 
     for (let i = 0;i < aantal; i++) {
         rndBlok = Math.floor(Math.random() * (aantalBlokjes - 1 ) ) + 1;
         speelbord[rndBlok].bom = true;
+        if ( !bommen.includes(rndBlok) ) { bommen.push(rndBlok); }
     };
 };
 
@@ -128,11 +128,3 @@ function maakNieuwSpeelbord() {
     bouwHelper();
 };
 
-function bouwHelper() {
-    console.log("startpositie rij: " + speelbord.rijPositie);
-    console.log("startpositie kolom: " + speelbord.kolomPositie);
-    console.log("aantal bommen: " + speelbord.aantalBommen);
-    console.log("blokgrootte: " + speelbord.blokGrootte);
-    console.log("Speelbord: " + JSON.stringify(speelbord));
-    console.log("Speelbord status aangemaakt: " + speelbord.speelbordStatusAangemaakt);
-};

@@ -55,6 +55,8 @@ function verwijderAlleSpeelborden() {
 };
 
 function toonSpeelborden() {
+    // deze lijst toont de speelborden die zijn opgeslagen. 
+    // TODO kan worden gerefactored naar eenvoudigere manier, zodat de lijst niet steeds hoeft te worden leeg gemaakt
     var aantalOpgeslagen = localStorage.length;
     var lijstOpgeslagen = [];
 
@@ -81,4 +83,21 @@ function toonSpeelborden() {
 
     // Maak nu de lijst met opgeslagen speelborden zichtbaar
     opgeslagenSpeelborden.style.display = "inline";
+};
+
+function bouwHelper() {
+    //Deze bouwhelper is tijdelijk en vervangt de console.log functie. Hij toont steeds de laatste informatie van het speelbord
+    bouwHelperBommen = document.getElementById("bouwHelperBommen");
+    bouwHelperBommen.innerHTML = "Bommen: " + JSON.stringify(bommen);
+    bouwHelperBord = document.getElementById("bouwHelperBord");
+    bouwHelperBord.innerHTML = "Status: " + speelbord.speelbordStatusAangemaakt;
+};
+
+function toonBouwHelper() {
+    bouwHelperScherm = document.getElementById("bouwHelperScherm");
+    if (bouwHelperScherm.style.display === "none") {
+        bouwHelperScherm.style.display = "block";
+    } else {
+        bouwHelperScherm.style.display = "none";
+    }
 };
