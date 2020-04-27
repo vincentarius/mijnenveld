@@ -1,6 +1,6 @@
 describe('Als ik de applicatie open' , () => {
   it('Dan wordt de applicatie geopend', () => {
-    cy.visit('http://localhost:5500/mijnenveld.html')
+    cy.visit('http://localhost:5500/index.html')
   })
 })
 
@@ -33,15 +33,13 @@ describe('Als ik een 3 x 3 speelbord aanmaak', () => {
   // })
 
   it('En is de knop en de selectie om het speelbord aan te maken verborgen', () => {
-  cy.get('[data-cy=formSpeelbordSelectie]').should('not.be.visible')
-  })  
+    cy.get('[data-cy=formSpeelbordSelectie]').should('not.be.visible')
+  })
+  
 })
 
 describe('Als ik een speelbord heb aangemaakt', () => {  
-  it('Dan is de knop Toon speelbord waarden beschikbaar', () => {
-    cy.get('[data-cy=knopSpeelbordWaarden]').should('be.visible')
-  })
-  it('En de knop Sla op is beschikbaar', () => {
+  it('Dan is de knop Sla op is beschikbaar', () => {
     cy.get('[data-cy=knopSpeelbordOpslaan]').should('be.visible')
   })
   it('En de knop toon opgeslagen speelborden is beschikbaar', () => {
