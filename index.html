@@ -38,7 +38,7 @@
             Sla op
     </button>
 
-    <button onclick="toonSpeelborden()"
+    <button onclick="toonOpgeslagenSpeelborden()"
             id="knopToonOpgeslagenSpeelborden"
             style="display: none"
             data-cy="knopToonOpgeslagenSpeelborden">
@@ -72,13 +72,24 @@
                 position: absolute;
                 left: 600px;
                 top: 0px;
-                width: 600px;"
+                width: 300px;"
          data-cy="bouwHelper">
          Bouwhelper
          <div id="bouwHelperBommen"></div>
          <div id="bouwHelperBord"></div>
     </div>
 
+    <div id="OpgeslagenBordenScherm"
+         style="display: none;
+                background-color: rgb(0, 110, 255);
+                border: 1px solid black;
+                position: absolute;
+                left: 910px;
+                top: 0px;
+                width: 300px;"
+         data-cy="OpgeslagenBordenScherm">
+         Opgeslagen borden
+        </div>
 
     <div id="speelbord" 
          style="display:none"

@@ -6,14 +6,14 @@ function randomBlok() {
     return rndBlok;
 };
 
-function slaOp(bord) {
+function slaOp() {
     var date = new Date();
-    localStorage.setItem("speelbord" /*+ date */, JSON.stringify(bord));
-    alert("Speelbord is opgeslagen!");
+    localStorage.setItem("speelbord" + date , JSON.stringify(speelbord));
+    speelborden();
 };
 
 function verwijderAlleSpeelborden() {
-    var teVerwijderenSpeelborden = [];
+    let teVerwijderenSpeelborden = [];
     // Voeg alle speelborden die verwijderd moeten worden toe aan de lijst
     for (var i = 0; i < localStorage.length; i++){
         if (localStorage.key(i).substring(0,9) == 'speelbord') {
@@ -25,43 +25,21 @@ function verwijderAlleSpeelborden() {
     for (var i = 0; i < teVerwijderenSpeelborden.length; i++) {
         localStorage.removeItem(teVerwijderenSpeelborden[i]);
     };
-
-    // Verwijder ook de bestaande lijst op het scherm    
-    while (opgeslagenSpeelborden.hasChildNodes()) {  
-        opgeslagenSpeelborden.removeChild(opgeslagenSpeelborden.firstChild);
-    };
+    speelborden();
 };
 
-function toonSpeelborden() {
-    // deze lijst toont de speelborden die zijn opgeslagen. 
-    // TODO kan worden gerefactored naar eenvoudigere manier, zodat de lijst niet steeds hoeft te worden leeg gemaakt
-    var aantalOpgeslagen = localStorage.length;
-    var lijstOpgeslagen = [];
-
-    // Verwijder eerst de bestaande lijst op het scherm    
-    while (opgeslagenSpeelborden.hasChildNodes()) {  
-        opgeslagenSpeelborden.removeChild(opgeslagenSpeelborden.firstChild);
-    };
-    
-    // Haal dan de lijst met alle speelborden die zijn opgeslagen in de localstorage op
-    for (let i = 0; i < aantalOpgeslagen; i++ ){
-        lijstOpgeslagen.push(localStorage.key(i));        
+function speelborden() {
+    OpgeslagenBordenScherm = document.getElementById("OpgeslagenBordenScherm");
+    let opgeslagenSpeelborden = [];
+    // Voeg alle speelborden die getoond moeten worden toe aan de lijst
+    for (var i = 0; i < localStorage.length; i++){
+        if (localStorage.key(i).substring(0,9) == 'speelbord') {
+            opgeslagenSpeelborden.push(localStorage.key(i));
+        };
     };
 
-    // Maak een lijst aan om de opgehaalde lijst met opgeslagen speelborden te tonen
-    ul = document.createElement('ul');
-    opgeslagenSpeelborden.appendChild(ul);
-
-    //En maak voor ieder opgeslagen speelbord een list item
-    lijstOpgeslagen.forEach(function (opgeslagen) {
-        let li = document.createElement('li');
-        ul.appendChild(li);
-        li.innerHTML += opgeslagen;
-    });
-
-    // Maak nu de lijst met opgeslagen speelborden zichtbaar
-    opgeslagenSpeelborden.style.display = "inline";
-};
+    OpgeslagenBordenScherm.innerHTML = JSON.stringify(opgeslagenSpeelborden);
+}
 
 function bouwHelper() {
     //Deze bouwhelper is tijdelijk en vervangt de console.log functie. Hij toont steeds de laatste informatie van het speelbord
@@ -78,4 +56,14 @@ function toonBouwHelper() {
     } else {
         bouwHelperScherm.style.display = "none";
     }
+};
+
+function toonOpgeslagenSpeelborden() {
+    OpgeslagenBordenScherm = document.getElementById("OpgeslagenBordenScherm");
+    if (OpgeslagenBordenScherm.style.display === "none") {
+        OpgeslagenBordenScherm.style.display = "block";
+    } else {
+        OpgeslagenBordenScherm.style.display = "none";
+    };
+    speelborden();
 };
