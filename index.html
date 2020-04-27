@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        mijnenveld
+    </title>
+    <script 
+        src="mijnenveldSpeelbord.js">
+    </script>
+    <script
+        src="mijnenveldActies.js">            
+    </script>
+</head>
+<body>
+
+    <form id="formSpeelbordSelectie"
+          style="display: inline"
+          data-cy="formSpeelbordSelectie">
+        Geef de waarde:
+        <select id="selectieSpeelbordGrootte"
+                data-cy="selectieSpeelbordGrootte">
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="10">10</option>
+        </select>
+        <input type="button" 
+               onclick="plaatsSpeelbord()" 
+               value="Maak speelbord"
+               data-cy="knopPlaatsSpeelbord">
+    </form>
+    
+    <button onclick="slaOp()"
+            id="knopSpeelbordOpslaan"
+            style="display: none"
+            data-cy="knopSpeelbordOpslaan">
+            Sla op
+    </button>
+
+    <button onclick="toonSpeelborden()"
+            id="knopToonOpgeslagenSpeelborden"
+            style="display: none"
+            data-cy="knopToonOpgeslagenSpeelborden">
+            Toon lijst
+    </button>
+
+    <button onclick="verwijderAlleSpeelborden()"
+            id="knopVerwijderSpeelborden"
+            style="display: none"
+            data-cy="knopVerwijderSpeelborden">
+            Verwijder
+    </button>
+
+    <button onclick="maakNieuwSpeelbord()"
+            id="knopMaakNieuwSpeelbord"
+            style="display: none"
+            data-cy="knopMaakNieuwSpeelbord">
+            Nieuw
+    </button>
+
+    <button onclick="toonBouwHelper()"
+            id="knopToonBouwHelper"
+            style="display: inline">
+            Bouw helper
+    </button>
+
+    <div id="bouwHelperScherm"
+         style="display: none;
+                background-color: lightblue;
+                border: 1px solid black;
+                position: absolute;
+                left: 600px;
+                top: 0px;
+                width: 600px;"
+         data-cy="bouwHelper">
+         Bouwhelper
+         <div id="bouwHelperBommen"></div>
+         <div id="bouwHelperBord"></div>
+    </div>
+
+
+    <div id="speelbord" 
+         style="display:none"
+         data-cy="speelbord">
+    </div>
+
+    <div id="opgeslagenSpeelborden" 
+         style="display: none"
+         data-cy="opgeslagenSpeelborden">
+    </div>
+
+
+
+</body>
+
+
+</html>

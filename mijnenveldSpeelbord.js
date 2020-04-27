@@ -16,7 +16,6 @@ function plaatsSpeelbord() {
     selectieSpeelbordGrootte = document.getElementById("selectieSpeelbordGrootte");
     bordGrootte = selectieSpeelbordGrootte.options[selectieSpeelbordGrootte.selectedIndex].text;    
     formSpeelbordSelectie = document.getElementById("formSpeelbordSelectie");
-    knopSpeelbordWaarden = document.getElementById("knopSpeelbordWaarden");
     knopSpeelbordOpslaan = document.getElementById("knopSpeelbordOpslaan");
     knopVerwijderSpeelborden = document.getElementById('knopVerwijderSpeelborden');
     knopMaakNieuwSpeelbord = document.getElementById('knopMaakNieuwSpeelbord');
@@ -31,7 +30,6 @@ function plaatsSpeelbord() {
         };
     };
     formSpeelbordSelectie.style.display = "none";
-    knopSpeelbordWaarden.style.display = "inline";
     knopSpeelbordOpslaan.style.display = "inline";
     knopVerwijderSpeelborden.style.display = "inline";
     knopMaakNieuwSpeelbord.style.display = "inline";
@@ -111,7 +109,6 @@ function plaatsBlokje(speelbord,identifier) {
 function maakNieuwSpeelbord() {
     // Verwijder eerst de juiste knoppen uit het scherm
     formSpeelbordSelectie.style.display = "inline";
-    knopSpeelbordWaarden.style.display = "none";
     knopSpeelbordOpslaan.style.display = "none";
     knopVerwijderSpeelborden.style.display = "none";
     knopMaakNieuwSpeelbord.style.display = "none";
