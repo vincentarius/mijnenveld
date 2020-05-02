@@ -1,5 +1,6 @@
 speelbordLocatie = document.getElementById("speelbord");
 creeerLeegSpeelbord();
+klaar = false;
 
 function creeerLeegSpeelbord() {
     speelbord = [];
@@ -47,10 +48,12 @@ function definieerSpeelbord(speelbord) {
             xPositie: "",
             yPositie: "",
             bom : false,
-            zichtbaar : true
+            zichtbaar : true,
+            aangeklikt : false
         };        
     };
     aantalBlokjes = speelbord.length;
+    aangeklikteBlokjes = [];
     bepaalPosities(speelbord);
     legBommen(speelbord);
 };
@@ -97,12 +100,10 @@ function plaatsBlokje(speelbord,identifier) {
         blok.style.top = speelbord[identifier].yPositie;
         blok.style.width = speelbord.blokGrootte + "px";
         blok.style.height = speelbord.blokGrootte + "px";
-        blok.style.backgroundColor = "red";
-        //blok.addEventListener("click", function(){voegKlikToe()});
+        blok.style.backgroundColor = "lightblue";
         blok.addEventListener("click", function(){
                 klikActie(speelbord[identifier].id);            
             });
-    if (speelbord[identifier].bom) { blok.innerHTML = "bom!"};
     // Plaats het element in het speelbord
     document.body.insertBefore(blok,speelbordLocatie);
 };
@@ -124,5 +125,14 @@ function maakNieuwSpeelbord() {
     };
     // Maak het speelbord leeg
     creeerLeegSpeelbord();
+    bommen = [];
+    aangeklikteBlokjes = [];
+    aantalBlokjes = "";
+    klaar = false;
     bouwHelper();
+    bouwHelperGekliktBlokje.innerHTML = "Geklikt: " ;
+    bouwHelperBom.innerHTML = "Bevat Bom: ";
+    bouwHelperAangeklikteBlokjes.innerHTML = "Aangeklikte blokjes: " + JSON.stringify(aangeklikteBlokjes);
+    bouwHelperAantalAangeklikteBlokjes.innerHTML = "Aantal aangeklikte blokjes: " + aangeklikteBlokjes.length;
+    bouwHelperEindeSpel.innerHTML = "Nieuw spel...";
 };
