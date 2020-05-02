@@ -43,10 +43,18 @@ function speelborden() {
 
 function bouwHelper() {
     //Deze bouwhelper is tijdelijk en vervangt de console.log functie. Hij toont steeds de laatste informatie van het speelbord
+    bouwHelperSpeelbordLengte = document.getElementById("bouwHelperSpeelbordLengte");
+    bouwHelperSpeelbordLengte.innerHTML = "Speelbord grootte: " + aantalBlokjes;
+    
     bouwHelperBommen = document.getElementById("bouwHelperBommen");
     bouwHelperBommen.innerHTML = "Bommen: " + JSON.stringify(bommen);
+    
     bouwHelperBord = document.getElementById("bouwHelperBord");
     bouwHelperBord.innerHTML = "Status: " + speelbord.speelbordStatusAangemaakt;
+    
+    bouwHelperGekliktBlokje = document.getElementById("bouwHelperGekliktBlokje");
+    bouwHelperBom = document.getElementById("bouwHelperBom");
+    bouwHelperEindeSpel.innerHTML = "Bezig...";
     
 };
 
@@ -56,7 +64,7 @@ function toonBouwHelper() {
         bouwHelperScherm.style.display = "block";
     } else {
         bouwHelperScherm.style.display = "none";
-    }
+    };
 };
 
 function toonOpgeslagenSpeelborden() {
@@ -70,8 +78,36 @@ function toonOpgeslagenSpeelborden() {
 };
 
 function klikActie(gekliktBlokje) {
-    bouwHelperGekliktBlokje = document.getElementById("bouwHelperGekliktBlokje");
+    dediv = document.getElementById("blok" + gekliktBlokje );
+    
+    //als er geklikt is, eerst kijken of er een bom zit. Dan wordt het hokje rood
+    if ( speelbord[gekliktBlokje].bom) {
+        dediv.style.backgroundColor = "red";
+        } else {
+            dediv.style.backgroundColor = "green";
+        };
+
+    // Zodra het laatste blokje is aangeklikt, is het spel afgelopen
+    if ( aangeklikteBlokjes.length === aantalBlokjes ) {
+        window.alert("Het spel is klaar!");
+        bouwHelperEindeSpel.innerHTML = "klaar";
+        } else {
+            //Blokjes die als zijn aangeklikt, mogen niet nogmaals worden aangeklikt
+            if ( speelbord[gekliktBlokje].aangeklikt ) {
+                window.alert("Deze is al aangeklikt!");
+            } else {                
+                speelbord[gekliktBlokje].aangeklikt = true;
+                aangeklikteBlokjes.push(gekliktBlokje);                
+        };
+
     bouwHelperGekliktBlokje.innerHTML = "Geklikt: " + gekliktBlokje;
-    bouwHelperBom = document.getElementById("bouwHelperBom");
-    bouwHelperBom.innerHTML = "Bevat Bom: " +  speelbord[gekliktBlokje].bom
+    bouwHelperBom.innerHTML = "Bevat Bom: " +  speelbord[gekliktBlokje].bom;
+    bouwHelperAangeklikteBlokjes = document.getElementById("bouwHelperAangeklikteBlokjes");
+    bouwHelperAangeklikteBlokjes.innerHTML = "Aangeklikte blokjes: " + JSON.stringify(aangeklikteBlokjes);
+    bouwHelperAantalAangeklikteBlokjes = document.getElementById("bouwHelperAantalAangeklikteBlokjes");
+    bouwHelperAantalAangeklikteBlokjes.innerHTML = "Aantal aangeklikte blokjes: " + aangeklikteBlokjes.length;
+    bouwHelperEindeSpel = document.getElementById("bouwHelperEindeSpel");
+    };
+    
+    
 };
