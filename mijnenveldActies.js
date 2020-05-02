@@ -47,6 +47,7 @@ function bouwHelper() {
     bouwHelperBommen.innerHTML = "Bommen: " + JSON.stringify(bommen);
     bouwHelperBord = document.getElementById("bouwHelperBord");
     bouwHelperBord.innerHTML = "Status: " + speelbord.speelbordStatusAangemaakt;
+    
 };
 
 function toonBouwHelper() {
@@ -66,4 +67,11 @@ function toonOpgeslagenSpeelborden() {
         OpgeslagenBordenScherm.style.display = "none";
     };
     speelborden();
+};
+
+function klikActie(gekliktBlokje) {
+    bouwHelperGekliktBlokje = document.getElementById("bouwHelperGekliktBlokje");
+    bouwHelperGekliktBlokje.innerHTML = "Geklikt: " + gekliktBlokje;
+    bouwHelperBom = document.getElementById("bouwHelperBom");
+    bouwHelperBom.innerHTML = "Bevat Bom: " +  speelbord[gekliktBlokje].bom
 };

@@ -86,7 +86,7 @@ function legBommen(speelbord) {
 };
 
 function plaatsBlokje(speelbord,identifier) {
-    let blok = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    let blok = document.createElement("div");
     let dataCy = document.createAttribute("data-cy");
     dataCy.value = "geplaatstBlokje";
     blok.setAttributeNode(dataCy);
@@ -95,14 +95,15 @@ function plaatsBlokje(speelbord,identifier) {
         blok.style.position = "absolute";
         blok.style.left = speelbord[identifier].xPositie;
         blok.style.top = speelbord[identifier].yPositie;
-        blok.style.width = speelbord.blokGrootte;
-        blok.style.height = speelbord.blokGrootte;
+        blok.style.width = speelbord.blokGrootte + "px";
+        blok.style.height = speelbord.blokGrootte + "px";
         blok.style.backgroundColor = "red";
-
-        var rect = document.createElement("rect");
-        blok.appendChild(rect);
-
-    // Plaats het svg element
+        //blok.addEventListener("click", function(){voegKlikToe()});
+        blok.addEventListener("click", function(){
+                klikActie(speelbord[identifier].id);            
+            });
+    if (speelbord[identifier].bom) { blok.innerHTML = "bom!"};
+    // Plaats het element in het speelbord
     document.body.insertBefore(blok,speelbordLocatie);
 };
 
@@ -125,4 +126,3 @@ function maakNieuwSpeelbord() {
     creeerLeegSpeelbord();
     bouwHelper();
 };
-
