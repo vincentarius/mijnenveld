@@ -64,8 +64,8 @@ describe('Als ik een speelbord heb aangemaakt', () => {
 })
 
 describe('Als ik het speelbord opsla', () => {
-  it('Dan is het speelbord opgeslagen TODO!', () => {
-    // TODO Local storage wordt voor iedere test leeg gemaakt door Cypress. De inhoud van local Storage kan niet worden gecontroleerd
+  it('Dan is het speelbord opgeslagen', () => {
+    // Local storage wordt voor iedere test leeg gemaakt door Cypress. De inhoud van local Storage kan niet worden gecontroleerd
     cy.get('[data-cy=knopSpeelbordOpslaan]').click()
     cy.get('[data-cy=knopToonOpgeslagenSpeelborden]').click()
     cy.get('[data-cy=OpgeslagenBordenScherm]').contains('speelbord')
@@ -74,8 +74,8 @@ describe('Als ik het speelbord opsla', () => {
 })
 
 describe('Als ik de opgeslagen speelborden wil zien', () => {
-  it('Dan worden de opgeslagen speelborden getoond TODO!', () => {
-    // TODO Het scherm met de opgeslagen speelborden moet getoond worden
+  it('Dan worden de opgeslagen speelborden getoond', () => {
+    // Het scherm met de opgeslagen speelborden moet getoond worden
     cy.get('[data-cy=knopSpeelbordOpslaan]').click()
     cy.get('[data-cy=knopToonOpgeslagenSpeelborden]').click()
     cy.get('[data-cy=OpgeslagenBordenScherm]').should('be.visible')
@@ -83,8 +83,8 @@ describe('Als ik de opgeslagen speelborden wil zien', () => {
 })
 
 describe('Als ik de opgeslagen speelborden verwijder', () => {
-  it('Dan zijn de opgeslagen speelborden verwijderd TODO!', () => {
-    // TODO Het scherm met de opgeslagen speelborden moet leeg zijn
+  it('Dan zijn de opgeslagen speelborden verwijderd', () => {
+    // Het scherm met de opgeslagen speelborden moet leeg zijn
     cy.get('[data-cy=knopVerwijderSpeelborden]').click()
     cy.get('[data-cy=OpgeslagenBordenScherm]').contains('[]')
   })
