@@ -30,6 +30,7 @@ function verwijderAlleSpeelborden() {
 
 function speelborden() {
     OpgeslagenBordenScherm = document.getElementById("OpgeslagenBordenScherm");
+    OpgeslagenBorden = document.getElementById("OpgeslagenBorden");
     let opgeslagenSpeelborden = [];
     // Voeg alle speelborden die getoond moeten worden toe aan de lijst
     for (var i = 0; i < localStorage.length; i++){
@@ -37,8 +38,7 @@ function speelborden() {
             opgeslagenSpeelborden.push(localStorage.key(i));
         };
     };
-
-    OpgeslagenBordenScherm.innerHTML = JSON.stringify(opgeslagenSpeelborden);
+    OpgeslagenBorden.innerHTML = JSON.stringify(opgeslagenSpeelborden);
 }
 
 function bouwHelper() {
@@ -59,17 +59,20 @@ function bouwHelper() {
 };
 
 function toonBouwHelper() {
-    bouwHelperScherm = document.getElementById("bouwHelperScherm");
-    if (bouwHelperScherm.style.display === "none") {
+    bouwHelperScherm = document.getElementById("bouwHelperScherm");    
+    let stijl = getComputedStyle(bouwHelperScherm);
+    console.log(stijl.display);
+    if (stijl.display === "none") {
         bouwHelperScherm.style.display = "block";
     } else {
         bouwHelperScherm.style.display = "none";
     };
 };
 
-function toonOpgeslagenSpeelborden() {
+function toonOpgeslagenSpeelborden() {    
     OpgeslagenBordenScherm = document.getElementById("OpgeslagenBordenScherm");
-    if (OpgeslagenBordenScherm.style.display === "none") {
+    let stijl = getComputedStyle(OpgeslagenBordenScherm);
+    if (stijl.display === "none") {
         OpgeslagenBordenScherm.style.display = "block";
     } else {
         OpgeslagenBordenScherm.style.display = "none";
@@ -78,13 +81,14 @@ function toonOpgeslagenSpeelborden() {
 };
 
 function klikActie(gekliktBlokje) {
-    dediv = document.getElementById("blok" + gekliktBlokje );
+    blokElement = document.getElementById("blok" + gekliktBlokje );
     
     //als er geklikt is, eerst kijken of er een bom zit. Dan wordt het hokje rood
     if ( speelbord[gekliktBlokje].bom) {
-        dediv.style.backgroundColor = "red";
+        blokElement.style.backgroundColor = "red";
+        toonBom(gekliktBlokje);
         } else {
-            dediv.style.backgroundColor = "green";
+            blokElement.style.backgroundColor = "green";
         };
 
     // Zodra het laatste blokje is aangeklikt, is het spel afgelopen
@@ -107,7 +111,15 @@ function klikActie(gekliktBlokje) {
     bouwHelperAantalAangeklikteBlokjes = document.getElementById("bouwHelperAantalAangeklikteBlokjes");
     bouwHelperAantalAangeklikteBlokjes.innerHTML = "Aantal aangeklikte blokjes: " + aangeklikteBlokjes.length;
     bouwHelperEindeSpel = document.getElementById("bouwHelperEindeSpel");
-    };
-    
-    
+    };    
 };
+
+function toonBom(ditBlokje) {
+    let bomElement = document.createElement("i");
+    bomElement.classList.add("material-icons");
+    let bomElementTekst = document.createTextNode("error");
+    bomElement.appendChild(bomElementTekst);
+    bomElement.id = "bomblok"
+    let element = document.getElementById("blok" + ditBlokje);
+    element.appendChild(bomElement);
+}

@@ -10,6 +10,17 @@
     <script
         src="mijnenveldActies.js">            
     </script>
+
+    <link 
+        rel="stylesheet" 
+        href="https://fonts.googleapis.com/css?family=Abel">
+    <link 
+        rel="stylesheet" 
+        href="stylesheet.css">
+    <link 
+        rel="stylesheet" 
+        href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 </head>
 <body>
 
@@ -27,7 +38,8 @@
         </select>
         <input type="button" 
                onclick="plaatsSpeelbord()" 
-               value="Maak speelbord"
+               class="material-icons"
+               value="add_box"
                data-cy="knopPlaatsSpeelbord">
     </form>
     
@@ -35,46 +47,40 @@
             id="knopSpeelbordOpslaan"
             style="display: none"
             data-cy="knopSpeelbordOpslaan">
-            Sla op
+            <i class="material-icons">save</i>
     </button>
 
     <button onclick="toonOpgeslagenSpeelborden()"
             id="knopToonOpgeslagenSpeelborden"
             style="display: none"
             data-cy="knopToonOpgeslagenSpeelborden">
-            Toon lijst
+            <i class="material-icons">list</i>
     </button>
 
     <button onclick="verwijderAlleSpeelborden()"
             id="knopVerwijderSpeelborden"
             style="display: none"
             data-cy="knopVerwijderSpeelborden">
-            Verwijder
+            <i class="material-icons">delete</i>
     </button>
 
     <button onclick="maakNieuwSpeelbord()"
             id="knopMaakNieuwSpeelbord"
             style="display: none"
             data-cy="knopMaakNieuwSpeelbord">
-            Nieuw
+            <i class="material-icons">add_box</i>
     </button>
 
     <button onclick="toonBouwHelper()"
             id="knopToonBouwHelper"
             style="display: inline">
-            Bouw helper
+            <i class="material-icons">visibility</i>
     </button>
 
     <div id="bouwHelperScherm"
-         style="display: none;
-                background-color: lightblue;
-                border: 1px solid black;
-                position: absolute;
-                left: 600px;
-                top: 0px;
-                width: 300px;"
          data-cy="bouwHelper">
-         Bouwhelper
+         <h1>Bouwhelper</h1>
+         <i class="material-icons">visibility</i>  
          <div id="bouwHelperSpeelbordLengte"></div>
          <div id="bouwHelperBommen"></div>
          <div id="bouwHelperBord"></div>
@@ -86,16 +92,11 @@
     </div>
 
     <div id="OpgeslagenBordenScherm"
-         style="display: none;
-                background-color: rgb(0, 110, 255);
-                border: 1px solid black;
-                position: absolute;
-                left: 910px;
-                top: 0px;
-                width: 300px;"
          data-cy="OpgeslagenBordenScherm">
-         Opgeslagen borden
-        </div>
+         <h1>Opgeslagen borden</h1>
+         <i class="material-icons">list</i>
+         <div id="OpgeslagenBorden"></div>
+    </div>
 
     <div id="speelbord" 
          style="display:none"
