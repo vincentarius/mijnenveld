@@ -94,13 +94,12 @@ function plaatsBlokje(speelbord,identifier) {
     dataCy.value = "geplaatstBlokje";
     blok.setAttributeNode(dataCy);
         blok.id = "blok" + speelbord[identifier].id;
-        blok.style.border = "1px solid black";
+        blok.classList.add("blok");
         blok.style.position = "absolute";
         blok.style.left = speelbord[identifier].xPositie;
         blok.style.top = speelbord[identifier].yPositie;
         blok.style.width = speelbord.blokGrootte + "px";
         blok.style.height = speelbord.blokGrootte + "px";
-        blok.style.backgroundColor = "lightblue";
         blok.addEventListener("click", function(){
                 klikActie(speelbord[identifier].id);            
             });
