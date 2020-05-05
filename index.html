@@ -22,19 +22,19 @@
         href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
-<body>
+<body onload="laadSpeelveld()">
 
     <form id="formSpeelbordSelectie"
           style="display: inline"
           data-cy="formSpeelbordSelectie">
-        Geef de waarde:
+          Geef de waarde:
         <select id="selectieSpeelbordGrootte"
                 data-cy="selectieSpeelbordGrootte">
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="10">10</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="10">10</option>
         </select>
         <input type="button" 
                onclick="plaatsSpeelbord()" 
@@ -43,72 +43,59 @@
                data-cy="knopPlaatsSpeelbord">
     </form>
     
-    <button onclick="slaOp()"
-            id="knopSpeelbordOpslaan"
-            style="display: none"
-            data-cy="knopSpeelbordOpslaan">
-            <i class="material-icons">save</i>
-    </button>
+    <div id="knoppen">
+        <button onclick="maakNieuwSpeelbord()"
+                id="knopMaakNieuwSpeelbord"
+                style="display: none"
+                data-cy="knopMaakNieuwSpeelbord">
+                <i class="material-icons">autorenew</i>
+        </button>
 
-    <button onclick="toonOpgeslagenSpeelborden()"
-            id="knopToonOpgeslagenSpeelborden"
-            style="display: none"
-            data-cy="knopToonOpgeslagenSpeelborden">
-            <i class="material-icons">list</i>
-    </button>
+        <button onclick="slaOp()"
+                id="knopSpeelbordOpslaan"
+                style="display: none"
+                data-cy="knopSpeelbordOpslaan">
+                <i class="material-icons">save</i>
+        </button>
 
-    <button onclick="verwijderAlleSpeelborden()"
-            id="knopVerwijderSpeelborden"
-            style="display: none"
-            data-cy="knopVerwijderSpeelborden">
-            <i class="material-icons">delete</i>
-    </button>
+        <button onclick="verwijderAlleSpeelborden()"
+                id="knopVerwijderSpeelborden"
+                style="display: none"
+                data-cy="knopVerwijderSpeelborden">
+                <i class="material-icons">delete</i>
+        </button>
 
-    <button onclick="maakNieuwSpeelbord()"
-            id="knopMaakNieuwSpeelbord"
-            style="display: none"
-            data-cy="knopMaakNieuwSpeelbord">
-            <i class="material-icons">add_box</i>
-    </button>
 
-    <button onclick="toonBouwHelper()"
-            id="knopToonBouwHelper"
-            style="display: inline">
-            <i class="material-icons">visibility</i>
-    </button>
+    </div>
 
-    <div id="bouwHelperScherm"
+    <div id="bouwHelperScherm"    
+         class = "hulpscherm"
          data-cy="bouwHelper">
-         <h1>Bouwhelper</h1>
-         <i class="material-icons">visibility</i>  
-         <div id="bouwHelperSpeelbordLengte"></div>
-         <div id="bouwHelperBommen"></div>
-         <div id="bouwHelperBord"></div>
-         <div id="bouwHelperGekliktBlokje"></div>
-         <div id="bouwHelperBom"></div>
-         <div id="bouwHelperAangeklikteBlokjes"></div>
-         <div id="bouwHelperAantalAangeklikteBlokjes"></div>
-         <div id="bouwHelperEindeSpel"></div>
+         <h1 onclick="toonBouwHelper()">Bouwhelper</h1>
+         <div id="bouwHelperSubScherm">
+            <div id="bouwHelperSpeelbordLengte"></div>
+            <div id="bouwHelperBommen"></div>
+            <div id="bouwHelperBord"></div>
+            <div id="bouwHelperGekliktBlokje"></div>
+            <div id="bouwHelperBom"></div>
+            <div id="bouwHelperAangeklikteBlokjes"></div>
+            <div id="bouwHelperAantalAangeklikteBlokjes"></div>
+            <div id="bouwHelperEindeSpel"></div>
+         </div>
     </div>
 
     <div id="OpgeslagenBordenScherm"
+         class = "hulpscherm"
          data-cy="OpgeslagenBordenScherm">
-         <h1>Opgeslagen borden</h1>
-         <i class="material-icons">list</i>
-         <div id="OpgeslagenBorden"></div>
+         <h1 onclick="toonOpgeslagenSpeelborden()">Opgeslagen borden</h1>
+         <div id="OpgeslagenBordenSubScherm"></div>
     </div>
 
     <div id="speelbord" 
-         style="display:none"
-         data-cy="speelbord">
+        style="display:none"
+        data-cy="speelbord">
     </div>
 
-    <div id="opgeslagenSpeelborden" 
-         style="display: none"
-         data-cy="opgeslagenSpeelborden">
-    </div>
-
-    <div id="demo"></div>
 </body>
 
 

@@ -1,46 +1,65 @@
-speelbordLocatie = document.getElementById("speelbord");
-creeerLeegSpeelbord();
-klaar = false;
-
-function creeerLeegSpeelbord() {
-    speelbord = [];
-    speelbord.speelbordStatusAangemaakt = false;
-    speelbord.blokGrootte = 50;
-    speelbord.aantalBommen = 5;
-    // Hier bepaal je de locatie van het speelbord
-    speelbord.rijPositie = 50;
-    speelbord.kolomPositie = 50;
-    bommen = [];
-};
-
-function plaatsSpeelbord() {
-    selectieSpeelbordGrootte = document.getElementById("selectieSpeelbordGrootte");
-    bordGrootte = selectieSpeelbordGrootte.options[selectieSpeelbordGrootte.selectedIndex].text;    
+function laadSpeelveld() {
+    // Definieert alle elementen die in de DOM voorkomen worden geladen, zodat deze overal gebruikt kunnen worden
     formSpeelbordSelectie = document.getElementById("formSpeelbordSelectie");
+    selectieSpeelbordGrootte = document.getElementById("selectieSpeelbordGrootte");
+    
+    speelbordLocatie = document.getElementById("speelbord");
+    
     knopSpeelbordOpslaan = document.getElementById("knopSpeelbordOpslaan");
     knopVerwijderSpeelborden = document.getElementById('knopVerwijderSpeelborden');
     knopMaakNieuwSpeelbord = document.getElementById('knopMaakNieuwSpeelbord');
-    knopToonOpgeslagenSpeelborden = document.getElementById('knopToonOpgeslagenSpeelborden');
+    
     opgeslagenSpeelborden = document.getElementById('opgeslagenSpeelborden');
+    OpgeslagenBordenScherm = document.getElementById("OpgeslagenBordenScherm");
+    OpgeslagenBordenSubScherm = document.getElementById("OpgeslagenBordenSubScherm");
+    
+    bouwHelperSpeelbordLengte = document.getElementById("bouwHelperSpeelbordLengte");
+    bouwHelperBommen = document.getElementById("bouwHelperBommen");
+    bouwHelperBord = document.getElementById("bouwHelperBord");
+    bouwHelperGekliktBlokje = document.getElementById("bouwHelperGekliktBlokje");
+    bouwHelperBom = document.getElementById("bouwHelperBom");
+    bouwHelperScherm = document.getElementById("bouwHelperScherm");
+    bouwHelperSubScherm = document.getElementById("bouwHelperSubScherm");
+    bouwHelperAangeklikteBlokjes = document.getElementById("bouwHelperAangeklikteBlokjes");
+    bouwHelperAantalAangeklikteBlokjes = document.getElementById("bouwHelperAantalAangeklikteBlokjes");
+    bouwHelperEindeSpel = document.getElementById("bouwHelperEindeSpel");
+    
+    creeerLeegSpeelbord();
+    klaar = false;
+};
 
-    definieerSpeelbord(speelbord);
+function creeerLeegSpeelbord() {
+    speelbord = [];
+    bommen = [];
+    aangeklikteBlokjes = [];
+    speelbord.speelbordStatusAangemaakt = false;
+    speelbord.blokGrootte = 50;
+    speelbord.aantalBommen = 2;
+    // Hier bepaal je de locatie van het speelbord
+    speelbord.rijPositie = 80;
+    speelbord.kolomPositie = 10;
+};
 
-    if (speelbord.speelbordStatus != 'gemaakt') {
+function plaatsSpeelbord() {
+    geselecteerdeBordGrootte = selectieSpeelbordGrootte.options[selectieSpeelbordGrootte.selectedIndex].text;
+    definieerSpeelbord();
+
+    if (!speelbord.speelbordStatusAangemaakt) {
         for (var i = 0; i < aantalBlokjes; i++) {
             plaatsBlokje(speelbord,i);
         };
     };
+    
     formSpeelbordSelectie.style.display = "none";
     knopSpeelbordOpslaan.style.display = "inline";
     knopVerwijderSpeelborden.style.display = "inline";
     knopMaakNieuwSpeelbord.style.display = "inline";
-    knopToonOpgeslagenSpeelborden.style.display = "inline";
     speelbord.speelbordStatusAangemaakt = true;
     bouwHelper();
 };
 
-function definieerSpeelbord(speelbord) {
-    let speelbordGrootte = bordGrootte * bordGrootte;;
+function definieerSpeelbord() {
+    speelbordGrootte = geselecteerdeBordGrootte * geselecteerdeBordGrootte;;
     // Maak het benodigde aantal blokjes aan.
     for (var i=0; i<speelbordGrootte; i++) {
         speelbord[i] = {
@@ -52,20 +71,17 @@ function definieerSpeelbord(speelbord) {
             aangeklikt : false
         };        
     };
+    
     aantalBlokjes = speelbord.length;
     aangeklikteBlokjes = [];
-    bepaalPosities(speelbord);
-    legBommen(speelbord);
-};
 
-function bepaalPosities(speelbord) {
-    // De index is nodig om door alle blokjes op het speelbord te lopen
+    // Vul de posities van alle blokjes in het array
     let index = 0;
     let kolomPositie = speelbord.kolomPositie;
     let rijPositie = speelbord.rijPositie;
 
-    for (let rij = 0; rij < bordGrootte; rij++) {
-        for (let kolom = 0; kolom < bordGrootte; kolom++){
+    for (let rij = 0; rij < geselecteerdeBordGrootte; rij++) {
+        for (let kolom = 0; kolom < geselecteerdeBordGrootte; kolom++){
             speelbord[index].yPositie = rijPositie + "px";
             speelbord[index].xPositie = kolomPositie + "px";
             kolomPositie = kolomPositie + speelbord.blokGrootte;
@@ -74,9 +90,9 @@ function bepaalPosities(speelbord) {
         rijPositie = rijPositie + speelbord.blokGrootte;
         kolomPositie = speelbord.kolomPositie;
     };
-};
 
-function legBommen(speelbord) {
+    // Plaats de bommen random in de blokjes. De HTML elementen worden pas aangemaakt bij het klikken, oomdat anders in de DOM
+    // zichtbaar gemaakt zou kunnen worden  
     let rndBlok;
     let aantal = speelbord.aantalBommen * 2;
     bommen = [];
@@ -86,6 +102,7 @@ function legBommen(speelbord) {
         speelbord[rndBlok].bom = true;
         if ( !bommen.includes(rndBlok) ) { bommen.push(rndBlok); }
     };
+
 };
 
 function plaatsBlokje(speelbord,identifier) {
@@ -95,7 +112,6 @@ function plaatsBlokje(speelbord,identifier) {
     blok.setAttributeNode(dataCy);
         blok.id = "blok" + speelbord[identifier].id;
         blok.classList.add("blok");
-        blok.style.position = "absolute";
         blok.style.left = speelbord[identifier].xPositie;
         blok.style.top = speelbord[identifier].yPositie;
         blok.style.width = speelbord.blokGrootte + "px";
@@ -113,10 +129,7 @@ function maakNieuwSpeelbord() {
     knopSpeelbordOpslaan.style.display = "none";
     knopVerwijderSpeelborden.style.display = "none";
     knopMaakNieuwSpeelbord.style.display = "none";
-    knopToonOpgeslagenSpeelborden.style.display = "none";
-    opgeslagenSpeelborden.style.display = "none";
     // Verwijder het aangemaakte speelbord van het scherm
-    let speelbordGrootte = bordGrootte * bordGrootte;;
     // Verwijder ieder blokje
     for (var i=0; i<speelbordGrootte; i++) {
         let verwijderBlok = document.getElementById("blok" + speelbord[i].id);
