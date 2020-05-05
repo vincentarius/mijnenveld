@@ -4,32 +4,66 @@ body {
     color: lightblue;
   }
 
-div.blok {
+#formSpeelbordSelectie {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+#knoppen {
+  position: absolute;
+  top: 10px;
+  left: 165px;
+}
+
+.blok {
   background-color: rgba(139, 137, 0, 0.8);
   border-style: solid;
   border-width: 1px;
-  margin: 20px;
+  position: fixed;
+}
+
+.blok:hover {
+  opacity: 0.75;
+}
+
+#bomblok {
+  font-size: 50px;
+  color: rgb(0, 0, 0);
+}
+
+#bomblok:hover {
+  opacity: 1;
+}
+
+#GeenBomblok {
+  font-size: 50px;
+  color: rgb(255, 255, 0);
+}
+
+.hulpscherm {
+  background-color: rgb(33, 209, 200);  
+  color: rgb(11, 6, 56);
+  top: 10px;
+  width: 300px;
+  outline-style: outset;
 }
 
 #bouwHelperScherm {
-  background-color: rgb(33, 209, 200);  
-  color: rgb(11, 6, 56);
   position: fixed;
-  left: 600px;
-  top: 10px;
-  width: 300px;
-  outline-style: outset;
-  display: none;
+  left: 910px;
 }
 
 #OpgeslagenBordenScherm {
-  background-color: rgb(33, 209, 200);  
-  color: rgb(11, 6, 56);
   position: absolute;
-  left: 910px;
-  top: 10px;
-  width: 300px;
-  outline-style: outset;
+  left: 600px;
+}
+
+#bouwHelperSubScherm {
+  display: none;
+}
+
+#OpgeslagenBordenSubScherm {
   display: none;
 }
 
@@ -40,11 +74,6 @@ h1 {
   color: rgb(33, 209, 200);
 }
 
-i.bomblok {
-  font-size: large;
-  margin: 0px;
-  color: rgb(33, 209, 200);
-}
 
 button {
   width: 50px;
