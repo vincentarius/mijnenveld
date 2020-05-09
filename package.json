@@ -1,5 +1,9 @@
 {
-    "scripts": {
-      "cy:run": "cypress open"
-    }
+  "scripts": {
+    "cy:run": "cypress open"
+  },
+  "dependencies": {
+    "formidable": "^1.2.2",
+    "mongodb": "^3.5.7"
   }
+}

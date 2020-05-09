@@ -42,14 +42,17 @@ function creeerLeegSpeelbord() {
 
 function plaatsSpeelbord() {
     geselecteerdeBordGrootte = selectieSpeelbordGrootte.options[selectieSpeelbordGrootte.selectedIndex].text;
+    // Creeer een speelbord met de opgegeven grootte
     definieerSpeelbord();
 
+    // Plaats het speelbord op het scherm
     if (!speelbord.speelbordStatusAangemaakt) {
         for (var i = 0; i < aantalBlokjes; i++) {
             plaatsBlokje(speelbord,i);
         };
     };
     
+    // Verberg de knoppen waarmee een nieuw speelbord kan worden gemaakt
     formSpeelbordSelectie.style.display = "none";
     knopSpeelbordOpslaan.style.display = "inline";
     knopVerwijderSpeelborden.style.display = "inline";
@@ -75,7 +78,7 @@ function definieerSpeelbord() {
     aantalBlokjes = speelbord.length;
     aangeklikteBlokjes = [];
 
-    // Vul de posities van alle blokjes in het array
+    // Vul de posities van alle blokjes in het speelbord array
     let index = 0;
     let kolomPositie = speelbord.kolomPositie;
     let rijPositie = speelbord.rijPositie;
@@ -109,6 +112,7 @@ function plaatsBlokje(speelbord,identifier) {
     let blok = document.createElement("div");
     let dataCy = document.createAttribute("data-cy");
     dataCy.value = "geplaatstBlokje";
+    var klikEvent = function(){ klikActie(speelbord[identifier].id); };
     blok.setAttributeNode(dataCy);
         blok.id = "blok" + speelbord[identifier].id;
         blok.classList.add("blok");
@@ -116,9 +120,7 @@ function plaatsBlokje(speelbord,identifier) {
         blok.style.top = speelbord[identifier].yPositie;
         blok.style.width = speelbord.blokGrootte + "px";
         blok.style.height = speelbord.blokGrootte + "px";
-        blok.addEventListener("click", function(){
-                klikActie(speelbord[identifier].id);            
-            });
+        blok.addEventListener("click", klikEvent);
     // Plaats het element in het speelbord
     document.body.insertBefore(blok,speelbordLocatie);
 };
