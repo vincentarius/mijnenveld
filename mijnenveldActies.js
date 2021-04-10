@@ -85,6 +85,7 @@ function klikActie(gekliktBlokje) {
             window.alert("Deze is al aangeklikt!");
         };
     };
+    
 
     bouwHelperGekliktBlokje.innerHTML = "Geklikt: " + gekliktBlokje;
     bouwHelperBom.innerHTML = "Bevat Bom: " +  speelbord[gekliktBlokje].bom;

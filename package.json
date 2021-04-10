@@ -1,5 +1,24 @@
 {
-    "scripts": {
-      "cy:run": "cypress open"
-    }
-  }
+  "scripts": {
+    "cy:run": "cypress open",
+    "start": "live-server"
+  },
+  "dependencies": {
+    "live-server": "^1.2.1"
+  },
+  "name": "mijnenveld",
+  "version": "1.0.0",
+  "main": "mijnenveldActies.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincentarius/mijnenveld.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vincentarius/mijnenveld/issues"
+  },
+  "homepage": "https://github.com/vincentarius/mijnenveld#readme",
+  "description": ""
+}
